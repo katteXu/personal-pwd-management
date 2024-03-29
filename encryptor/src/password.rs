@@ -1,5 +1,5 @@
 use anyhow::{bail, Error, Ok};
-use base64::encode;
+use base64::engine::{general_purpose, Engine};
 use hash::merhash::mersenne_hash;
 
 const CRYPTO:&str = "!pqHr$*+ST1Vst_uv:?wWS%X&Y-/Z01_2.34<ABl9ECo|x#yDE^F{GHEI[]JK>LM#NOBWPQ:RaKU@}cde56R7=8f/9gIhi,jkzmn";
@@ -45,8 +45,8 @@ pub fn generate_password(seed: &str, length: usize) -> Result<String, Error> {
         password += &interval;
     }
 
-    //
-    password = encode(password);
+    password = general_purpose::STANDARD.encode(password);
+
     password = password.replace("/", "*").replace("+", "*");
 
     // Truncate the password to the desired length
