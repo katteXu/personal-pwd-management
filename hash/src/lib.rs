@@ -1,14 +1,14 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub mod merhash; // 导出merhash模块
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::merhash::mersenne_hash;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    fn mersenne_hash_works() {
+        let seed = "katte";
+        let hash = mersenne_hash(seed);
+
+        assert_eq!(830583, hash);
     }
 }
