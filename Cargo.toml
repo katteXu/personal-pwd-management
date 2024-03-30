@@ -1,2 +1,4 @@
 [workspace]
 members = ["hash", "encryptor", "main"]
+
+package.authors = ["Your Name"]

@@ -1,4 +1,4 @@
-pub mod merhash; // 导出merhash模块
+pub mod merhash;
 
 #[cfg(test)]
 mod tests {
